@@ -17,32 +17,30 @@ export default function App() {
   const theme = useAppSelector((state) => state.theme.mode);
 
   return (
-    <main className={theme === "dark" ? "dark" : ""}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <DashboardLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<Overview />} />
-          <Route path="workflows" element={<Workflows />} />
-          <Route path="automation" element={<Automation />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Overview />} />
+        <Route path="workflows" element={<Workflows />} />
+        <Route path="automation" element={<Automation />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
 
-        <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
 
-      </Routes >
-    </main>
+    </Routes >
   );
 }

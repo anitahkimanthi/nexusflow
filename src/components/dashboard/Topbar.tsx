@@ -1,9 +1,12 @@
-import { Bell, Search, Menu, Sun, Moon } from "lucide-react";
+import {
+    Bell, Search, Menu,
+    // Sun, Moon 
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useState } from "react";
-import { toggleTheme } from "../../redux/themeSlice";
+// import { toggleTheme } from "../../redux/themeSlice";
 
 type DashboardTopbarProps = {
     onMenuClick: () => void;
@@ -16,7 +19,7 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     const user = useAppSelector((state) => state.auth.user);
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-    const theme = useAppSelector((state) => state.theme.mode);
+    // const theme = useAppSelector((state) => state.theme.mode);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -24,10 +27,10 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     };
 
     return (
-        <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10 bg-white/80 px-4 py-4 text-slate-950 backdrop-blur-xl dark:bg-slate-950/80 dark:text-white lg:px-6">            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
+        <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10  px-4 py-4 text-slate-950 backdrop-blur-xl dark:bg-slate-950/80 dark:text-white lg:px-6">            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
             <button
                 onClick={onMenuClick}
-                className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 lg:hidden"
+                className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 text-slate-300 lg:hidden"
             >
                 <Menu size={18} />
             </button>
@@ -84,14 +87,14 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
                 <div className="relative">
                     <button
                         onClick={() => setIsUserMenuOpen((prev) => !prev)}
-                        className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+                        className="flex items-center gap-3 rounded-2xl border border-white/10 px-4 py-2 transition hover:bg-white/10"
                     >
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 font-semibold text-slate-950">
                             {user?.name?.charAt(0) || "D"}
                         </div>
 
                         <div className="hidden text-left sm:block">
-                            <p className="text-sm font-medium">
+                            <p className="text-sm font-medium text-white">
                                 {user?.name || "Demo Client"}
                             </p>
 
