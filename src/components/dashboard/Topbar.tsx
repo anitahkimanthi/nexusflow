@@ -1,10 +1,14 @@
-import { Bell, LogOut, Search } from "lucide-react";
+import { Bell, LogOut, Search, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 import { logout } from "../../redux/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
-export default function Topbar() {
+type DashboardTopbarProps = {
+    onMenuClick: () => void;
+};
+
+
+export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.auth.user);
@@ -15,8 +19,14 @@ export default function Topbar() {
     };
 
     return (
-        <header className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4 backdrop-blur-xl">
+        <header className="flex items-center justify-between gap-4 border-b border-white/10 bg-white/5 px-4 py-4 backdrop-blur-xl lg:px-6">
             <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
+                <button
+                    onClick={onMenuClick}
+                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 lg:hidden"
+                >
+                    <Menu size={18} />
+                </button>
                 <Search size={18} />
                 <input
                     type="text"

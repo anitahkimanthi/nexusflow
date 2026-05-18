@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AIInsightsPanel from "../components/dashboard/AIInsightsPanel";
 import MetricCard from "../components/dashboard/MetricCard";
 import PerformanceChart from "../components/dashboard/PerformanceChart";
@@ -7,12 +8,15 @@ import WorkflowActivity from "../components/dashboard/WorkflowActivity";
 import { dashboardMetrics } from "../data/mockDashboard";
 
 export default function Dashboard() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     return (
         <main className="flex min-h-screen bg-slate-950 text-white">
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen}
+                onClose={() => setIsSidebarOpen(false)} />
 
             <section className="flex flex-1 flex-col">
-                <Topbar />
+                <Topbar onMenuClick={() => setIsSidebarOpen(true)} />
 
                 <div className="flex-1 space-y-6 p-6 lg:p-8">
                     <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
