@@ -6,6 +6,10 @@ import Sidebar from "../components/dashboard/Sidebar";
 import Topbar from "../components/dashboard/Topbar";
 import WorkflowActivity from "../components/dashboard/WorkflowActivity";
 import { dashboardMetrics } from "../data/mockDashboard";
+import TeamActivity from "../components/dashboard/TeamActivity";
+import SystemHealth from "../components/dashboard/SystemHealth";
+import ActiveWorkflows from "../components/dashboard/ActiveWorkflows";
+import WorkflowTable from "../components/dashboard/WorkflowTable";
 
 export default function Dashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -49,6 +53,15 @@ export default function Dashboard() {
 
                     {/* PerformanceChart */}
                     <PerformanceChart />
+
+                    {/* team activities */}
+
+                    <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
+                        <TeamActivity />
+                        <SystemHealth />
+                    </div>
+                    <ActiveWorkflows />
+                    <WorkflowTable />
                 </div>
             </section>
         </main>

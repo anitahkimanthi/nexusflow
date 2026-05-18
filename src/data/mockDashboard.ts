@@ -91,3 +91,96 @@ export const aiInsights = [
     icon: TrendingUp,
   },
 ];
+
+export const activities = [
+  {
+    user: "Sarah Kim",
+    action: "updated onboarding workflow automation",
+    time: "4 mins ago",
+  },
+  {
+    user: "Michael Torres",
+    action: "resolved support escalation queue",
+    time: "12 mins ago",
+  },
+  {
+    user: "Emma Wilson",
+    action: "deployed new AI routing rules",
+    time: "27 mins ago",
+  },
+  {
+    user: "Daniel Lee",
+    action: "reviewed automation analytics",
+    time: "1 hour ago",
+  },
+];
+
+export const systems = [
+  {
+    name: "Workflow Engine",
+    status: "Operational",
+    color: "bg-emerald-400",
+  },
+  {
+    name: "AI Automation Core",
+    status: "Healthy",
+    color: "bg-cyan-400",
+  },
+  {
+    name: "Cloud Synchronization",
+    status: "Stable",
+    color: "bg-violet-400",
+  },
+];
+
+export const workflows = [
+  {
+    name: "Client Onboarding",
+    department: "Customer Success",
+    progress: 78,
+    status: "Running",
+  },
+  {
+    name: "Invoice Processing",
+    department: "Finance",
+    progress: 100,
+    status: "Completed",
+  },
+  {
+    name: "Lead Qualification",
+    department: "Sales",
+    progress: 64,
+    status: "Running",
+  },
+];
+
+export const workflowsTable = [
+  {
+    name: "Client Onboarding",
+    owner: "Sarah Kim",
+    status: "Running",
+    priority: "High",
+    updated: "4 mins ago",
+  },
+  {
+    name: "Invoice Processing",
+    owner: "Michael Torres",
+    status: "Completed",
+    priority: "Medium",
+    updated: "11 mins ago",
+  },
+  {
+    name: "Support Escalation",
+    owner: "Emma Wilson",
+    status: "Needs Review",
+    priority: "High",
+    updated: "22 mins ago",
+  },
+  {
+    name: "Lead Qualification",
+    owner: "Daniel Lee",
+    status: "Running",
+    priority: "Low",
+    updated: "35 mins ago",
+  },
+];
