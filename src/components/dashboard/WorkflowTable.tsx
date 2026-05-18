@@ -18,6 +18,8 @@ export default function WorkflowTable() {
         });
     }, [filter, searchQuery]);
 
+
+
     return (
         <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -53,43 +55,56 @@ export default function WorkflowTable() {
                 </div>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="w-full min-w-[700px] text-left">
-                    <thead>
-                        <tr className="border-b border-white/10 text-sm text-slate-500">
-                            <th className="pb-4 font-medium">Workflow</th>
-                            <th className="pb-4 font-medium">Owner</th>
-                            <th className="pb-4 font-medium">Status</th>
-                            <th className="pb-4 font-medium">Priority</th>
-                            <th className="pb-4 font-medium">Updated</th>
-                        </tr>
-                    </thead>
+            {filteredWorkflows.length === 0 ? (
+                <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-8 text-center">
+                    <p className="text-lg font-medium text-white">
+                        No workflows found
+                    </p>
 
-                    <tbody className="divide-y divide-white/10">
-                        {filteredWorkflows.map((workflow) => (
-                            <tr key={workflow.name} className="text-sm">
-                                <td className="py-4 font-medium text-white">
-                                    {workflow.name}
-                                </td>
-                                <td className="py-4 text-slate-400">
-                                    {workflow.owner}
-                                </td>
-                                <td className="py-4">
-                                    <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300">
-                                        {workflow.status}
-                                    </span>
-                                </td>
-                                <td className="py-4 text-slate-400">
-                                    {workflow.priority}
-                                </td>
-                                <td className="py-4 text-slate-500">
-                                    {workflow.updated}
-                                </td>
+                    <p className="mt-2 text-sm text-slate-400">
+                        Try changing your search or status filter.
+                    </p>
+                </div>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="w-full min-w-[700px] text-left">
+                        <thead>
+                            <tr className="border-b border-white/10 text-sm text-slate-500">
+                                <th className="pb-4 font-medium">Workflow</th>
+                                <th className="pb-4 font-medium">Owner</th>
+                                <th className="pb-4 font-medium">Status</th>
+                                <th className="pb-4 font-medium">Priority</th>
+                                <th className="pb-4 font-medium">Updated</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+
+                        <tbody className="divide-y divide-white/10">
+                            {filteredWorkflows.map((workflow) => (
+                                <tr key={workflow.name} className="text-sm">
+                                    <td className="py-4 font-medium text-white">
+                                        {workflow.name}
+                                    </td>
+                                    <td className="py-4 text-slate-400">
+                                        {workflow.owner}
+                                    </td>
+                                    <td className="py-4">
+                                        <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300">
+                                            {workflow.status}
+                                        </span>
+                                    </td>
+                                    <td className="py-4 text-slate-400">
+                                        {workflow.priority}
+                                    </td>
+                                    <td className="py-4 text-slate-500">
+                                        {workflow.updated}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
+
         </div>
     );
 }

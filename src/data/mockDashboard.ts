@@ -3,6 +3,9 @@ import {
   Bot,
   CheckCircle2,
   Clock3,
+  Plus,
+  Rocket,
+  Settings2,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -65,16 +68,28 @@ export const workflowActivity = [
   },
 ];
 
-export const automationPerformance = [
-  { day: "Mon", completed: 120, automated: 96 },
-  { day: "Tue", completed: 180, automated: 144 },
-  { day: "Wed", completed: 150, automated: 132 },
-  { day: "Thu", completed: 220, automated: 190 },
-  { day: "Fri", completed: 260, automated: 230 },
-  { day: "Sat", completed: 190, automated: 170 },
-  { day: "Sun", completed: 240, automated: 218 },
-];
-
+export const automationPerformance = {
+  "7D": [
+    { day: "Mon", completed: 120, automated: 96 },
+    { day: "Tue", completed: 180, automated: 144 },
+    { day: "Wed", completed: 150, automated: 132 },
+    { day: "Thu", completed: 220, automated: 190 },
+    { day: "Fri", completed: 260, automated: 230 },
+    { day: "Sat", completed: 190, automated: 170 },
+    { day: "Sun", completed: 240, automated: 218 },
+  ],
+  "30D": [
+    { day: "W1", completed: 760, automated: 620 },
+    { day: "W2", completed: 940, automated: 790 },
+    { day: "W3", completed: 1180, automated: 980 },
+    { day: "W4", completed: 1320, automated: 1120 },
+  ],
+  "90D": [
+    { day: "Jan", completed: 3400, automated: 2850 },
+    { day: "Feb", completed: 4100, automated: 3540 },
+    { day: "Mar", completed: 4680, automated: 4010 },
+  ],
+};
 export const aiInsights = [
   {
     title: "Workflow delay detected",
@@ -182,5 +197,28 @@ export const workflowsTable = [
     status: "Running",
     priority: "Low",
     updated: "35 mins ago",
+  },
+];
+
+export const actions = [
+  {
+    title: "Create Workflow",
+    description: "Build a new automation pipeline",
+    icon: Plus,
+  },
+  {
+    title: "Launch Automation",
+    description: "Deploy AI workflow execution",
+    icon: Rocket,
+  },
+  {
+    title: "AI Optimization",
+    description: "Generate workflow improvements",
+    icon: Bot,
+  },
+  {
+    title: "System Settings",
+    description: "Manage operational preferences",
+    icon: Settings2,
   },
 ];

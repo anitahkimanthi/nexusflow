@@ -22,6 +22,7 @@ export default function MetricCard({
         return value;
     }
     return (
+
         <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/20 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.06]">
             <div className="mb-6 flex items-center justify-between">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">

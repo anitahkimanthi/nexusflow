@@ -5,6 +5,7 @@ import {
     BarChart3,
     Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const links = [
     {
@@ -74,6 +75,15 @@ export default function Sidebar({ isOpen, onClose }: DashboardSidebarProps) {
                     })}
                 </nav>
 
+                <div className="p-4">
+                    <Link
+                        to="/"
+                        onClick={onClose}
+                        className="flex w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300 transition hover:border-cyan-400/30 hover:text-white"
+                    >
+                        Back to Portfolio
+                    </Link>
+                </div>
                 {/* Footer */}
                 <div className="border-t border-white/10 p-6">
                     <div className="rounded-2xl bg-cyan-500/10 p-4">
