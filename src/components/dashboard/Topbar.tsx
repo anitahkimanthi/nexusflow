@@ -27,24 +27,22 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     };
 
     return (
-        <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10  px-4 py-4 text-slate-950 backdrop-blur-xl dark:bg-slate-950/80 dark:text-white lg:px-6">            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
-            <button
+        <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10  px-4 py-4 text-slate-950 backdrop-blur-xl dark:bg-slate-950/80 dark:text-white lg:px-6">
+            <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">            <button
                 onClick={onMenuClick}
                 className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 text-slate-300 lg:hidden"
             >
                 <Menu size={18} />
             </button>
-            <Search size={18} />
-            <input
-                type="text"
-                placeholder="Search workflows..."
-                className="bg-transparent outline-none placeholder:text-slate-500"
-            />
-        </div>
+                <Search size={18} />
+                <input
+                    type="text"
+                    placeholder="Search workflows..."
+                    className="w-full min-w-0 bg-transparent outline-none placeholder:text-slate-500"
+                />
+            </div>
 
-            <div className="flex items-center gap-4">
-
-
+            <div className="flex shrink-0 items-center gap-2 sm:gap-4">
                 <div className="relative">
                     <button
                         onClick={() => setIsNotificationsOpen((prev) => !prev)}
