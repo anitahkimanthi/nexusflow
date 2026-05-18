@@ -16,9 +16,9 @@ export default function Sidebar({ isOpen, onClose }: DashboardSidebarProps) {
                 />
             )}
             <aside
-                className={`fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-white/10 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 lg:static lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-white/10 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 dark:bg-slate-950/95 lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
-            >                {/* Logo */}
+            >             {/* Logo */}
                 <div className="border-b border-white/10 p-6">
                     <p className="text-sm uppercase tracking-[0.35em] text-cyan-400">
                         NexusFlow

@@ -1,8 +1,9 @@
-import { Bell, Search, Menu } from "lucide-react";
+import { Bell, Search, Menu, Sun, Moon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useState } from "react";
+import { toggleTheme } from "../../redux/themeSlice";
 
 type DashboardTopbarProps = {
     onMenuClick: () => void;
@@ -15,6 +16,7 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     const user = useAppSelector((state) => state.auth.user);
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const theme = useAppSelector((state) => state.theme.mode);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -22,21 +24,20 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
     };
 
     return (
-        <header className="flex items-center justify-between gap-4 border-b border-white/10 bg-white/5 px-4 py-4 backdrop-blur-xl lg:px-6">
-            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
-                <button
-                    onClick={onMenuClick}
-                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 lg:hidden"
-                >
-                    <Menu size={18} />
-                </button>
-                <Search size={18} />
-                <input
-                    type="text"
-                    placeholder="Search workflows..."
-                    className="bg-transparent outline-none placeholder:text-slate-500"
-                />
-            </div>
+        <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10 bg-white/80 px-4 py-4 text-slate-950 backdrop-blur-xl dark:bg-slate-950/80 dark:text-white lg:px-6">            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-slate-400">
+            <button
+                onClick={onMenuClick}
+                className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 lg:hidden"
+            >
+                <Menu size={18} />
+            </button>
+            <Search size={18} />
+            <input
+                type="text"
+                placeholder="Search workflows..."
+                className="bg-transparent outline-none placeholder:text-slate-500"
+            />
+        </div>
 
             <div className="flex items-center gap-4">
 
@@ -50,7 +51,6 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
 
                         <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-cyan-400" />
                     </button>
-
                     {isNotificationsOpen && (
                         <div className="absolute right-0 top-14 z-50 w-80 rounded-3xl border border-white/10 bg-slate-950 p-4 shadow-2xl">
                             <p className="mb-4 text-sm uppercase tracking-[0.25em] text-cyan-400">
@@ -74,6 +74,12 @@ export default function Topbar({ onMenuClick }: DashboardTopbarProps) {
                         </div>
                     )}
                 </div>
+                {/* <button
+                    onClick={() => dispatch(toggleTheme())}
+                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:text-white"
+                >
+                    {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                </button> */}
 
                 <div className="relative">
                     <button
