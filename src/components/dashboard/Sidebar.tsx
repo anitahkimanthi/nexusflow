@@ -5,30 +5,9 @@ import {
     BarChart3,
     Settings,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { links } from "../../data/mockDashboard";
 
-const links = [
-    {
-        name: "Overview",
-        icon: LayoutDashboard,
-    },
-    {
-        name: "Workflows",
-        icon: Workflow,
-    },
-    {
-        name: "Automation",
-        icon: Bot,
-    },
-    {
-        name: "Analytics",
-        icon: BarChart3,
-    },
-    {
-        name: "Settings",
-        icon: Settings,
-    },
-]
 type DashboardSidebarProps = {
     isOpen: boolean;
     onClose: () => void;
@@ -63,14 +42,21 @@ export default function Sidebar({ isOpen, onClose }: DashboardSidebarProps) {
                         const Icon = item.icon;
 
                         return (
-                            <button
+                            <NavLink
                                 key={item.name}
+                                to={item.path}
+                                end={item.path === "/dashboard"}
                                 onClick={onClose}
-                                className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
+                                className={({ isActive }) =>
+                                    `flex w-full items-center gap-3 rounded-2xl px-4 py-3 transition ${isActive
+                                        ? "bg-cyan-400 text-slate-950"
+                                        : "text-slate-300 hover:bg-white/5 hover:text-white"
+                                    }`
+                                }
                             >
                                 <Icon size={20} />
                                 <span>{item.name}</span>
-                            </button>
+                            </NavLink>
                         );
                     })}
                 </nav>

@@ -1,13 +1,17 @@
 import {
   Activity,
+  BarChart3,
   Bot,
   CheckCircle2,
   Clock3,
+  LayoutDashboard,
   Plus,
   Rocket,
+  Settings,
   Settings2,
   TrendingUp,
   Users,
+  Workflow,
 } from "lucide-react";
 
 export const dashboardMetrics = [
@@ -220,5 +224,33 @@ export const actions = [
     title: "System Settings",
     description: "Manage operational preferences",
     icon: Settings2,
+  },
+];
+
+export const links = [
+  {
+    name: "Overview",
+    path: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    name: "Workflows",
+    path: "/dashboard/workflows",
+    icon: Workflow,
+  },
+  {
+    name: "Automation",
+    path: "/dashboard/automation",
+    icon: Bot,
+  },
+  {
+    name: "Analytics",
+    path: "/dashboard/analytics",
+    icon: BarChart3,
+  },
+  {
+    name: "Settings",
+    path: "/dashboard/settings",
+    icon: Settings,
   },
 ];
