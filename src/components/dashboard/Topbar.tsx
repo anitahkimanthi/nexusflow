@@ -1,4 +1,4 @@
-import { Bell, LogOut, Search, Menu } from "lucide-react";
+import { Bell, Search, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
