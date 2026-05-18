@@ -10,11 +10,11 @@ import Automation from "./components/dashboard/sidebar/Automation";
 import Analytics from "./components/dashboard/sidebar/Analytics";
 import Settings from "./components/dashboard/sidebar/Settings";
 import DashboardLayout from "./pages/Dashboard";
-import { useAppSelector } from "./redux/hooks";
+// import { useAppSelector } from "./redux/hooks";
 
 
 export default function App() {
-  const theme = useAppSelector((state) => state.theme.mode);
+  // const theme = useAppSelector((state) => state.theme.mode);
 
   return (
     <Routes>
