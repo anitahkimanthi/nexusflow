@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import AnimatedMetricValue from "./AnimatedMetricValue";
 
 type MetricCardProps = {
     title: string;
@@ -8,6 +9,7 @@ type MetricCardProps = {
     icon: LucideIcon;
 };
 
+
 export default function MetricCard({
     title,
     value,
@@ -15,6 +17,10 @@ export default function MetricCard({
     trend,
     icon: Icon,
 }: MetricCardProps) {
+
+    function formatMetric(value: string) {
+        return value;
+    }
     return (
         <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/20 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.06]">
             <div className="mb-6 flex items-center justify-between">
@@ -30,7 +36,7 @@ export default function MetricCard({
             <p className="text-sm text-slate-400">{title}</p>
 
             <h3 className="mt-2 text-3xl font-semibold text-white">
-                {value}
+                <AnimatedMetricValue value={value} />
             </h3>
 
             <p className="mt-2 text-sm text-slate-500">{trend}</p>
