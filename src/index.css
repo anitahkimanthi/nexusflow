@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Base */
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-secondary: #f1f5f9;
+
+  /* Text */
+  --text-primary: #020617;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* Borders */
+  --border: rgba(15, 23, 42, 0.08);
+
+  /* Brand */
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --accent: #22d3ee;
+
+  /* Cards */
+  --card: rgba(255, 255, 255, 0.7);
+
+  /* Glow */
+  --glow: rgba(99, 102, 241, 0.15);
+}
+
+.dark {
+  /* Base */
+  --bg: #020617;
+  --surface: #0f172a;
+  --surface-secondary: #111827;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Brand */
+  --primary: #818cf8;
+  --primary-light: #a5b4fc;
+  --accent: #67e8f9;
+
+  /* Cards */
+  --card: rgba(255, 255, 255, 0.03);
+
+  /* Glow */
+  --glow: rgba(99, 102, 241, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: Inter, system-ui, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
