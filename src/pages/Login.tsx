@@ -5,13 +5,14 @@ import { LogIn } from "lucide-react";
 
 import { login } from "../redux/authSlice";
 import { useAppDispatch } from "../redux/hooks";
+import { getRegisteredUsers } from "../helpers/AuthHelpers";
 
 export default function Login() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("client@nexusflow.ai");
-    const [password, setPassword] = useState("demo123");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const handleLogin = (e: React.FormEvent) => {
@@ -32,23 +33,29 @@ export default function Login() {
 
         if (Object.keys(newErrors).length > 0) return;
 
-        // Demo credentials
-        if (
-            email === "client@nexusflow.ai" &&
-            password === "demo123"
-        ) {
-            dispatch(
-                login({
-                    name: "Demo Client",
-                    email,
-                    role: "Operations Manager",
-                })
-            );
+        const users = getRegisteredUsers();
 
-            navigate("/dashboard");
-        } else {
-            setErrors(newErrors);
+        const registeredUser = users.find((user) => user.email === email);
+
+        if (!registeredUser) {
+            setErrors({ email: "Incorrect email or password" });
+            return;
         }
+
+        if (registeredUser.password !== password) {
+            setErrors({ password: "Wrong password" });
+            return;
+        }
+
+        dispatch(
+            login({
+                name: "Demo Client",
+                email,
+                role: "Operations Manager",
+            })
+        );
+
+        navigate("/dashboard");
     };
 
 
@@ -83,18 +90,6 @@ export default function Login() {
                     </p>
                 </div>
 
-                {/* Demo Credentials */}
-                <div className="mb-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4">
-                    <p className="text-sm font-medium text-cyan-200">
-                        Demo Credentials
-                    </p>
-
-                    <div className="mt-3 space-y-1 text-sm text-slate-300">
-                        <p>Email: client@nexusflow.ai</p>
-                        <p>Password: demo123</p>
-                    </div>
-                </div>
-
                 <div className="space-y-5">
                     <input
                         value={email}
@@ -109,7 +104,7 @@ export default function Login() {
                             }`}
                     />
                     {errors.email && (
-                        <p className="mt-2 text-sm text-rose-400">
+                        <p className="mt-0 text-sm text-rose-400">
                             {errors.email}
                         </p>
                     )}

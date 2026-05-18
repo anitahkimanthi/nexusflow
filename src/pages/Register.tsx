@@ -5,14 +5,15 @@ import { UserPlus } from "lucide-react";
 
 import { login } from "../redux/authSlice";
 import { useAppDispatch } from "../redux/hooks";
+import { getRegisteredUsers, saveRegisteredUser } from "../helpers/AuthHelpers";
 
 export default function Register() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("client@nexusflow.ai");
-    const [password, setPassword] = useState("demo123");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const handleRegister = (e: React.FormEvent) => {
@@ -39,6 +40,24 @@ export default function Register() {
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length > 0) return;
+
+        const users = getRegisteredUsers();
+        const userExists = users.some((user) => user.email === email);
+
+        if (userExists) {
+            setErrors({ email: "This email is already registered" });
+            return;
+        }
+
+        const newUser = {
+            name,
+            email,
+            password,
+            role: "Operations Manager",
+        };
+
+
+        saveRegisteredUser(newUser);
 
         dispatch(
             login({
