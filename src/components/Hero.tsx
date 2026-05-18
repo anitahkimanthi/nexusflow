@@ -1,7 +1,10 @@
 import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+    const navigate = useNavigate();
+
     return (
         <section className="relative flex min-h-screen items-center overflow-hidden bg-[var(--bg)] px-6 py-24 text-[var(--text-primary)]">
             {/* Soft glow */}
@@ -45,9 +48,9 @@ function Hero() {
                             />
                         </button>
 
-                        <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-4 font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface)]">
+                        <button onClick={() => navigate('/register')} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-4 font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface)]">
                             <Play size={18} />
-                            Explore System
+                            Explore Platform
                         </button>
                     </div>
                 </motion.div>
