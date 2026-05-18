@@ -1,30 +1,29 @@
-import AIInsights from "./components/AIInsights";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import OperationalDashboard from "./components/OperationalDashboard";
-import WorkflowBuilder from "./components/WorkflowBuilder";
-import WorkflowPreview from "./components/WorkflowPreview";
-import { useAppSelector } from "./redux/hooks";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import ProtectedRoute from "./components/dashboard/ProtectedRoute";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
 
-function App() {
-  const theme = useAppSelector((state) => state.theme.mode);
 
+export default function App() {
   return (
-    <main className={theme === "dark" ? "dark" : ""}>
-      <div className="min-h-screen bg-white text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
-        <Navbar />
-        <Hero />
-        <WorkflowPreview />
-        <WorkflowBuilder />
-        <OperationalDashboard />
-        <AIInsights />
-        <CTA />
-        <Footer />
-      </div>
-    </main>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Login />} />
+
+
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+
+    </Routes>
   );
 }
-
-export default App;
