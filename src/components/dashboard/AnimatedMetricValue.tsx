@@ -7,7 +7,6 @@ type AnimatedMetricValueProps = {
 export default function AnimatedMetricValue({ value }: AnimatedMetricValueProps) {
     const numericValue = Number(value.replace(/[^0-9.]/g, ""));
     const hasPercent = value.includes("%");
-    const hasComma = value.includes(",");
 
     const [displayValue, setDisplayValue] = useState(0);
 
