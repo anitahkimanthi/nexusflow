@@ -1,10 +1,3 @@
-import {
-    LayoutDashboard,
-    Workflow,
-    Bot,
-    BarChart3,
-    Settings,
-} from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { links } from "../../data/mockDashboard";
 
