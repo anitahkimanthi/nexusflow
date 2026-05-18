@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import { useNavigate } from "react-router-dom";
 
 const links = [
 
@@ -9,6 +10,7 @@ const links = [
 ];
 
 function Navbar() {
+    const navigate = useNavigate();
 
     return (
         <motion.header
@@ -45,7 +47,9 @@ function Navbar() {
 
                     <ThemeToggle />
 
-                    <button className="hidden rounded-2xl bg-[var(--text-primary)] px-5 py-3 text-sm font-medium text-[var(--bg)] transition hover:scale-[1.01] md:block">
+                    <button className="hidden rounded-2xl bg-[var(--text-primary)] px-5 py-3 text-sm font-medium text-[var(--bg)] transition hover:scale-[1.01] md:block"
+                        onClick={() => navigate('/register')}
+                    >
                         Explore Platform
                     </button>
                 </div>
