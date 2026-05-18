@@ -18,9 +18,7 @@ export default function MetricCard({
     icon: Icon,
 }: MetricCardProps) {
 
-    function formatMetric(value: string) {
-        return value;
-    }
+
     return (
 
         <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/20 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.06]">
